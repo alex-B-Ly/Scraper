@@ -5,7 +5,7 @@ var router = express.Router();
 
 // ROUTES
 router.get('/', function(req, res){
-  res.send('It\'s working');
+  res.render('home', {title: 'Alex\'s scraper'});
 });
 
 module.exports = router;
