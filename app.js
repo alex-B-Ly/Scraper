@@ -3,6 +3,12 @@ var handles = require('express-handlebars');
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+var mongoose = require('mongoose');
+
+// TODO Add DB name at end of connect line below
+mongoose.connect('mongodb://localhost/entrepreneur_db');
+var db = mongoose.connection;
+
 // MIDDLEWARE
 
 // HANDLEBARS
