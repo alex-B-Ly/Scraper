@@ -36,7 +36,7 @@ router.get('/entrepreneur', function(req, res){
     if(err){
       res.send(err);
     }else{
-      res.render('entrepreneur', {doc});
+      res.render('entrepreneur', {doc, title:'Make yourself rich and laugh at poor people!'});
     }
   });
 });
