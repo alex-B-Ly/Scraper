@@ -13,7 +13,7 @@ router.get('/', function(req, res){
 
 // Enterpreneur scrape route
 router.post('/entrepreneur-scrape', function(req,res){
-  var entTitle = {title:'Donald Trump brings global peace.', link: 'www.mongohatesme.com'};
+  var entTitle = {title:'The muffin man', link: 'https://www.youtube.com/watch?v=t4iu0j5BtAs'};
   var entrep = new Entrepreneur(entTitle);
 
   entrep.save(entTitle);
