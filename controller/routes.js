@@ -26,19 +26,19 @@ router.post('/entrepreneur-scrape', function(req,res){
         entrep.save(entTitle);
       }
     });
-  });  
+  });
   
-  res.redirect('/entrepreneur');
+  res.redirect('/');
+});
+
+router.get('/entrepreneurContent', function(req,res){
+  Entrepreneur.find({}).exec(function(err, doc){
+    res.json(doc);
+  });
 });
 
 router.get('/entrepreneur', function(req, res){
-  Entrepreneur.find({}).exec(function(err, doc){
-    if(err){
-      res.send(err);
-    }else{
-      res.render('entrepreneur', {doc});
-    }
-  });
+  res.render('entrepreneur', {title:'Open for business!'});
 });
 
 module.exports = router;

@@ -10,6 +10,7 @@ mongoose.connect('mongodb://localhost/entrepreneur_db');
 var db = mongoose.connection;
 
 // MIDDLEWARE
+app.use('/static', express.static('public'));
 
 // HANDLEBARS
 app.engine('handlebars', handles({defaultLayout: 'main'}));
