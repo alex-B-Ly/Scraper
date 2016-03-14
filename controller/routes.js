@@ -38,13 +38,7 @@ router.get('/entrepreneurContent', function(req,res){
 });
 
 router.get('/entrepreneur', function(req, res){
-  Entrepreneur.find({}).exec(function(err, doc){
-    if(err){
-      res.send(err);
-    }else{
-      res.render('entrepreneur', {title:'Open for business!'});
-    }
-  });
+  res.render('entrepreneur', {title:'Open for business!'});
 });
 
 module.exports = router;
