@@ -18,8 +18,8 @@ router.post('/entrepreneur-scrape', function(req,res){
     var data = cheerio.load(stuff);
     data('.title').each(function(i, element){
       var title = data(this).children('a').text();
-      var link = data(this).children('a').attr('href');
-
+      var link = 'https://www.reddit.com'+data(this).children('a').attr('href');
+      
       if(title && link){
         var entTitle = {title, link};
         var entrep = new Entrepreneur(entTitle);
