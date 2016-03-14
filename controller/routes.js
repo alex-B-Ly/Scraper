@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
 
 // ROUTE OBJECTS
 var Entrepreneur = require('../models/entrepreneur.js');
@@ -11,7 +10,7 @@ router.get('/', function(req, res){
 });
 
 router.get('/create', function(req,res){
-  var entTitle = {title:'How to live life like everyone else', link: 'www.whatawaste.com'};
+  var entTitle = {title:'Milking life, one moment at a time.', link: 'www.udders4life.com'};
   var entrep = new Entrepreneur(entTitle);
 
   entrep.save(entTitle);

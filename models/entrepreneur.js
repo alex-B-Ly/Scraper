@@ -7,7 +7,11 @@ var titleSchema = new Schema({
   },
   link:{
     type: String
-  }
+  },
+  comments:[{
+    type: Schema.Types.ObjectId,
+    ref: 'Comments'
+  }]
 });
 
 var Title = mongoose.model('title', titleSchema);
