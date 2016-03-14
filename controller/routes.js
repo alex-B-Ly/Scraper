@@ -1,4 +1,6 @@
 var express = require('express');
+var request = require('request');
+var cheerio = require('cheerio');
 var router = express.Router();
 
 // ROUTE OBJECTS
@@ -10,8 +12,8 @@ router.get('/', function(req, res){
 });
 
 // TODO Need to change route to post
-router.get('/create', function(req,res){
-  var entTitle = {title:'ok', link: 'www.works.com'};
+router.post('/entrepreneur-scrape', function(req,res){
+  var entTitle = {title:'Donald Trump brings global peace.', link: 'www.mongohatesme.com'};
   var entrep = new Entrepreneur(entTitle);
 
   entrep.save(entTitle);
@@ -23,6 +25,7 @@ router.get('/entrepreneur', function(req, res){
     if(err){
       res.send(err);
     }else{
+      console.log(doc);
       res.send(doc);
     }
   });
