@@ -9,8 +9,9 @@ router.get('/', function(req, res){
   res.render('home', {title: 'Alex\'s scraper'});
 });
 
+// TODO Need to change route to post
 router.get('/create', function(req,res){
-  var entTitle = {title:'Milking life, one moment at a time.', link: 'www.udders4life.com'};
+  var entTitle = {title:'ok', link: 'www.works.com'};
   var entrep = new Entrepreneur(entTitle);
 
   entrep.save(entTitle);
