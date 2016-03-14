@@ -6,7 +6,7 @@
     <div class="row">
       {{#each doc}}
       <div class="col-xs-10 col-xs-offset-1">
-        <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+        <a href="{{this.link}}" target="_blank" data-id="{{this._id}}">{{this.title}}</a>
       </div>
       {{/each}}
     </div>
