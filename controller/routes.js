@@ -13,15 +13,26 @@ router.get('/', function(req, res){
 
 // Enterpreneur scrape route
 router.post('/entrepreneur-scrape', function(req,res){
-  var entTitle = {title:'The muffin man', link: 'https://www.youtube.com/watch?v=t4iu0j5BtAs'};
-  var entrep = new Entrepreneur(entTitle);
+  
+  request('https://www.reddit.com/r/entrepreneur/', function(err, response, stuff){
+    var data = cheerio.load(stuff);
+    data('.title').each(function(i, element){
+      var title = data(this).children('a').text();
+      var link = data(this).children('a').attr('href');
 
-  entrep.save(entTitle);
+      if(title && link){
+        var entTitle = {title, link};
+        var entrep = new Entrepreneur(entTitle);
+        entrep.save(entTitle);
+      }
+    });
+  });  
+  
   res.redirect('/entrepreneur');
 });
 
 router.get('/entrepreneur', function(req, res){
-  Entrepreneur.find({}, function(err, doc){
+  Entrepreneur.find({}).exec(function(err, doc){
     if(err){
       res.send(err);
     }else{
