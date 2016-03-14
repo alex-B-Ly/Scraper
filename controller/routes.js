@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 
 // ROUTE OBJECTS
 var Entrepreneur = require('../models/entrepreneur.js');
@@ -9,7 +10,15 @@ router.get('/', function(req, res){
   res.render('home', {title: 'Alex\'s scraper'});
 });
 
-router.get('/titles', function(req, res){
+router.get('/create', function(req,res){
+  var ent = {title:'How to live life like everyone else', link: 'www.whatawaste.com'};
+  var entrep = new Entrepreneur(ent);
+
+  entrep.save(ent);
+  res.redirect('/entrepreneur');
+});
+
+router.get('/entrepreneur', function(req, res){
   Entrepreneur.find({}, function(err, doc){
     if(err){
       res.send(err);
