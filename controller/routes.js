@@ -11,9 +11,9 @@ router.get('/', function(req, res){
   res.render('home', {title: 'Alex\'s scraper'});
 });
 
-// TODO Need to change route to post
+// Enterpreneur scrape route
 router.post('/entrepreneur-scrape', function(req,res){
-  var entTitle = {title:'Donald Trump brings global peace.', link: 'www.mongohatesme.com'};
+  var entTitle = {title:'The muffin man', link: 'https://www.youtube.com/watch?v=t4iu0j5BtAs'};
   var entrep = new Entrepreneur(entTitle);
 
   entrep.save(entTitle);
@@ -25,8 +25,7 @@ router.get('/entrepreneur', function(req, res){
     if(err){
       res.send(err);
     }else{
-      console.log(doc);
-      res.send(doc);
+      res.render('entrepreneur', {doc});
     }
   });
 });
