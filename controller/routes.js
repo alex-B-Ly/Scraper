@@ -11,10 +11,10 @@ router.get('/', function(req, res){
 });
 
 router.get('/create', function(req,res){
-  var ent = {title:'How to live life like everyone else', link: 'www.whatawaste.com'};
-  var entrep = new Entrepreneur(ent);
+  var entTitle = {title:'How to live life like everyone else', link: 'www.whatawaste.com'};
+  var entrep = new Entrepreneur(entTitle);
 
-  entrep.save(ent);
+  entrep.save(entTitle);
   res.redirect('/entrepreneur');
 });
 

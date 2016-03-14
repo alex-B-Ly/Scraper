@@ -6,7 +6,7 @@ var PORT = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 
 // TODO Change DB name at end of connect line below to subreddits
-mongoose.connect('mongodb://localhost/subreddits_db');
+mongoose.connect('mongodb://localhost/entrepreneur_db');
 var db = mongoose.connection;
 
 // MIDDLEWARE
