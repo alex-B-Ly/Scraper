@@ -32,7 +32,7 @@ router.post('/entrepreneur-scrape', function(req,res){
 });
 
 router.get('/entrepreneur', function(req, res){
-  Entrepreneur.find({}, function(err, doc){
+  Entrepreneur.find({}).exec(function(err, doc){
     if(err){
       res.send(err);
     }else{
