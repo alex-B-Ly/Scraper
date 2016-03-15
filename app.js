@@ -1,5 +1,6 @@
 var express = require('express');
 var handles = require('express-handlebars');
+var bodyParser = require('body-parser');
 var app = express();
 var PORT = process.env.PORT || 8080;
 
@@ -11,6 +12,10 @@ var db = mongoose.connection;
 
 // MIDDLEWARE
 app.use('/static', express.static('public'));
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // HANDLEBARS
 app.engine('handlebars', handles({defaultLayout: 'main'}));

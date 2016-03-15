@@ -11,6 +11,10 @@ router.get('/', function(req, res){
   res.render('home', {title: 'Alex\'s scraper'});
 });
 
+router.get('/entrepreneur', function(req, res){
+  res.render('entrepreneur', {title:'Open for business!'});
+});
+
 // Enterpreneur scrape route
 router.post('/entrepreneur-scrape', function(req,res){
   
@@ -26,19 +30,21 @@ router.post('/entrepreneur-scrape', function(req,res){
         entrep.save(entTitle);
       }
     });
-  });
-  
+  });  
   res.redirect('/');
 });
 
+// End point route to get data for entrepreneur route
 router.get('/entrepreneurContent', function(req,res){
   Entrepreneur.find({}).exec(function(err, doc){
     res.json(doc);
   });
 });
 
-router.get('/entrepreneur', function(req, res){
-  res.render('entrepreneur', {title:'Open for business!'});
+router.post('/delete-title', function(req, res){
+  // TODO Write out delete functionality to remove from DB
+  console.log(req.body.deleteMe);
+  res.redirect('/entrepreneur');
 });
 
 module.exports = router;
