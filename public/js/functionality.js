@@ -9,6 +9,7 @@ $(document).ready(function(){
   // LIST BUILDER FUNCTION
   function listBuilder(data){
     for(var i = 0; i<12; i++){
+      var titleCol = $('<div class="col-xs-12">')
       var titleLi = $('<li>');
       var titleLink = $('<a>');
       var deleteButton = $('<button>');
@@ -22,17 +23,22 @@ $(document).ready(function(){
       deleteButton.text('X')
         .addClass('pull-right btn btn-sm btn-default delete-title');
 
+      // Append link and delete to titleCol
+      titleCol.append(titleLink)
+        .append(deleteButton);
+
       // Generate list item with data attribute
-      titleLi.append(titleLink)
+      titleLi.append(titleCol)
         .attr('data-id', data[i]._id)
         .addClass('list-group-item title-item col-xs-12');
-
-      titleLi.append(deleteButton);
 
       $('#content-list').append(titleLi);
     }
   }
 
   // COMMENTS BUILDER
+  function commentsBuilder(){
+    
+  }
 
 });
