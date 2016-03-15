@@ -9,9 +9,11 @@ $(document).ready(function(){
   // LIST BUILDER FUNCTION
   function listBuilder(data){
     for(var i = 0; i<12; i++){
-      var titleCol = $('<div class="col-xs-12">')
+      var titleCol = $('<div class="col-xs-12">');
+      var commentsCol = $('<div class="col-xs-12">');
       var titleLi = $('<li>');
       var titleLink = $('<a>');
+      var commentToggle = $('<a class="comments comments-inactive" href="#">Show Comments</a>');
       var deleteButton = $('<button>');
 
       // Generate link title
@@ -27,8 +29,12 @@ $(document).ready(function(){
       titleCol.append(titleLink)
         .append(deleteButton);
 
+      // Comment Toggle
+      commentsCol.append(commentToggle);
+
       // Generate list item with data attribute
       titleLi.append(titleCol)
+        .append(commentsCol)
         .attr('data-id', data[i]._id)
         .addClass('list-group-item title-item col-xs-12');
 
@@ -37,8 +43,5 @@ $(document).ready(function(){
   }
 
   // COMMENTS BUILDER
-  function commentsBuilder(){
-    
-  }
 
 });
