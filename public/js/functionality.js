@@ -2,7 +2,6 @@ $(document).ready(function(){
 
   // AJAX call to get titles
   $.getJSON("/entrepreneurContent", function(stuff){
-    console.log(stuff);
     listBuilder(stuff);
   });
 
@@ -14,6 +13,8 @@ $(document).ready(function(){
       // column vars
       var titleCol = $('<div class="col-xs-12">');
       var commentsCol = $('<div class="col-xs-12">');
+      var commentAreaCol = $('<div class="col-xs-12 comment-area">');
+      // Link vars
       var titleLink = $('<a>');
       var commentToggle = $('<a class="comments comments-inactive" href="#">Show Comments</a>');
       // Delete vars
@@ -49,10 +50,38 @@ $(document).ready(function(){
         .attr('data-id', data[i]._id)
         .addClass('list-group-item title-item col-xs-12');
 
+      // Generate comment col and use parent li data-id
+      commentsBuilder(commentAreaCol);
+
+      commentAreaCol.addClass('hide');
+
+      titleLi.append(commentAreaCol);
+
       $('#content-list').append(titleLi);
     }
   }
 
-  // COMMENTS BUILDER
+  // COMMENTS AREA BUILDER
+  function commentsBuilder(commentsArea){
+    var commentList = $('<ul>');
+    var commentForm = $('<form>');
+    var commentText = $('<textarea>');
+    var commentSubmit = $('<button type="submit">Submit Comment</button>');
 
+    commentForm.attr('action','comment-submit')
+      .append(commentText)
+      .append(commentSubmit);
+
+    commentsArea.append(commentList)
+      .append(commentForm);
+  }
+
+  // SHOW COMMENTS ONCLICK
+  function showMeTheComments(){
+    // When show comments clicked, show next comment area
+    
+  }
+
+  // FUNCTIONS CALLED
+  showMeTheComments();
 });
