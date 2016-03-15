@@ -27,10 +27,13 @@ $(document).ready(function(){
 
       // Generate delete button
       deleteButton.text('X')
-        .addClass('pull-right btn btn-sm btn-default delete-title');
+        .addClass('pull-right btn btn-sm btn-default delete-title')
+        .attr('name', 'deleteMe')
+        .attr('type', 'submit')
+        .val(data[i]._id);
 
       // Append delete button to form
-      deleteForm.attr('action', 'delete-title/'+data[i]._id)
+      deleteForm.attr('action', '/delete-title')
       .append(deleteButton);
 
       // Append link and delete to titleCol
