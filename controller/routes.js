@@ -15,7 +15,7 @@ router.get('/entrepreneur', function(req, res){
   res.render('entrepreneur', {title:'Open for business!'});
 });
 
-// Enterpreneur scrape route
+// Entrepreneur scrape route
 router.post('/entrepreneur-scrape', function(req,res){
   
   request('https://www.reddit.com/r/entrepreneur/', function(err, response, stuff){
@@ -42,8 +42,11 @@ router.get('/entrepreneurContent', function(req,res){
 });
 
 router.post('/delete-title', function(req, res){
-  // TODO Write out delete functionality to remove from DB
-  console.log(req.body.deleteMe);
+  Entrepreneur.remove({_id: req.body.deleteMe}, function(err){
+    if(err){
+      console.log(err);
+    }
+  });
   res.redirect('/entrepreneur');
 });
 
