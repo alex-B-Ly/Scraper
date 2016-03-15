@@ -41,6 +41,9 @@ router.get('/entrepreneurContent', function(req,res){
   });
 });
 
+// End point route to get data for comments
+
+// Delete title route
 router.post('/delete-title', function(req, res){
   Entrepreneur.remove({_id: req.body.deleteMe}, function(err){
     if(err){
