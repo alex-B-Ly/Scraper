@@ -9,11 +9,15 @@ $(document).ready(function(){
   // LIST BUILDER FUNCTION
   function listBuilder(data){
     for(var i = 0; i<12; i++){
+      // list item to be appended to ul
+      var titleLi = $('<li>');
+      // column vars
       var titleCol = $('<div class="col-xs-12">');
       var commentsCol = $('<div class="col-xs-12">');
-      var titleLi = $('<li>');
       var titleLink = $('<a>');
       var commentToggle = $('<a class="comments comments-inactive" href="#">Show Comments</a>');
+      // Delete vars
+      var deleteForm = $('<form method="POST">');
       var deleteButton = $('<button>');
 
       // Generate link title
@@ -25,9 +29,13 @@ $(document).ready(function(){
       deleteButton.text('X')
         .addClass('pull-right btn btn-sm btn-default delete-title');
 
+      // Append delete button to form
+      deleteForm.attr('action', 'delete-title/'+data[i]._id)
+      .append(deleteButton);
+
       // Append link and delete to titleCol
       titleCol.append(titleLink)
-        .append(deleteButton);
+        .append(deleteForm);
 
       // Comment Toggle
       commentsCol.append(commentToggle);
