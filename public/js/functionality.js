@@ -52,9 +52,8 @@ $(document).ready(function(){
 
       // Generate comment col and use parent li data-id
       commentsBuilder(commentAreaCol);
-
-      commentAreaCol.addClass('hide');
-
+      // TODO Add custom class with display:none below
+      commentAreaCol.addClass('comments-hidden');
       titleLi.append(commentAreaCol);
 
       $('#content-list').append(titleLi);
@@ -85,8 +84,12 @@ $(document).ready(function(){
 
       if($(this).hasClass('comments-active')){
         $(this).text('Hide Comments');
+        // TODO add custom classes
+        $(this).parent().next().slideToggle(400);
       }else{
         $(this).text('Show Comments');
+        // TODO add custom classes
+        $(this).parent().next().slideToggle(400);
       }
     });
   }
