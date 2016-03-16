@@ -83,11 +83,9 @@ $(document).ready(function(){
 
       if($(this).hasClass('comments-active')){
         $(this).text('Hide Comments');
-        // TODO add custom classes
         $(this).parent().next().slideToggle(400);
       }else{
         $(this).text('Show Comments');
-        // TODO add custom classes
         $(this).parent().next().slideToggle(400);
       }
     });
