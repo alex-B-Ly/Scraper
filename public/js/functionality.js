@@ -13,7 +13,7 @@ $(document).ready(function(){
       // column vars
       var titleCol = $('<div class="col-xs-12">');
       var commentsCol = $('<div class="col-xs-12">');
-      var commentAreaCol = $('<div class="col-xs-12 comment-area">');
+      var commentAreaCol = $('<div class="col-xs-12 comment-area text-center">');
       // Link vars
       var titleLink = $('<a>');
       var commentToggle = $('<a class="show-comments" href="#">Show Comments</a>');
@@ -52,9 +52,7 @@ $(document).ready(function(){
 
       // Generate comment col and use parent li data-id
       commentsBuilder(commentAreaCol);
-
-      commentAreaCol.addClass('hide');
-
+      // TODO Add custom class with display:none below
       titleLi.append(commentAreaCol);
 
       $('#content-list').append(titleLi);
@@ -65,8 +63,8 @@ $(document).ready(function(){
   function commentsBuilder(commentsArea){
     var commentList = $('<ul>');
     var commentForm = $('<form>');
-    var commentText = $('<textarea>');
-    var commentSubmit = $('<button type="submit">Submit Comment</button>');
+    var commentText = $('<textarea placeholder="Add a comment">');
+    var commentSubmit = $('<button type="submit" class="btn btn-primary comment-button">Submit Comment</button>');
 
     commentForm.attr('action','comment-submit')
       .append(commentText)
@@ -85,8 +83,10 @@ $(document).ready(function(){
 
       if($(this).hasClass('comments-active')){
         $(this).text('Hide Comments');
+        $(this).parent().next().slideToggle(400);
       }else{
         $(this).text('Show Comments');
+        $(this).parent().next().slideToggle(400);
       }
     });
   }
