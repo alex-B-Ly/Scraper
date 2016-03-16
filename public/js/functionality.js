@@ -16,7 +16,7 @@ $(document).ready(function(){
       var commentAreaCol = $('<div class="col-xs-12 comment-area">');
       // Link vars
       var titleLink = $('<a>');
-      var commentToggle = $('<a class="comments comments-inactive" href="#">Show Comments</a>');
+      var commentToggle = $('<a class="show-comments" href="#">Show Comments</a>');
       // Delete vars
       var deleteForm = $('<form method="POST">');
       var deleteButton = $('<button>');
@@ -79,7 +79,16 @@ $(document).ready(function(){
   // SHOW COMMENTS ONCLICK
   function showMeTheComments(){
     // When show comments clicked, show next comment area
-    
+    $(document).on('click', '.show-comments', function(e){
+      e.preventDefault();
+      $(this).toggleClass('comments-active');
+
+      if($(this).hasClass('comments-active')){
+        $(this).text('Hide Comments');
+      }else{
+        $(this).text('Show Comments');
+      }
+    });
   }
 
   // FUNCTIONS CALLED
