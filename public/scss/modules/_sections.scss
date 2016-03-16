@@ -1,3 +1,14 @@
 
   // SCRAPED DATA COMMENTS
-  
+  .comment-area{
+    display: none;
+  }
+
+  .comment-area textarea{
+    resize: none;
+    width: 70%;
+    height: 100px;
+    outline: none;
+    border: 2px solid #93948C;
+    padding: 5px;
+  }
