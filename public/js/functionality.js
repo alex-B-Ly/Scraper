@@ -50,8 +50,10 @@ $(document).ready(function(){
         .attr('data-id', data[i]._id)
         .addClass('list-group-item title-item col-xs-12');
 
+      var titleID = titleLi.attr('data-id');
+
       // Generate comment col and use parent li data-id
-      commentsBuilder(commentAreaCol);
+      commentsBuilder(commentAreaCol, titleID);
       // TODO Add custom class with display:none below
       titleLi.append(commentAreaCol);
 
@@ -60,13 +62,16 @@ $(document).ready(function(){
   }
 
   // COMMENTS AREA BUILDER
-  function commentsBuilder(commentsArea){
+  function commentsBuilder(commentsArea, id){
     var commentList = $('<ul>');
     var commentForm = $('<form>');
     var commentText = $('<textarea placeholder="Add a comment">');
     var commentSubmit = $('<button type="submit" class="btn btn-primary comment-button">Submit Comment</button>');
 
-    commentForm.attr('action','comment-submit')
+    commentText.attr('name', 'insertcomment');
+
+    commentForm.attr('action','/comment-submit/'+id)
+      .attr('method', 'POST')
       .append(commentText)
       .append(commentSubmit);
 

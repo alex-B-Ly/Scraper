@@ -43,6 +43,13 @@ router.get('/entrepreneurContent', function(req,res){
 
 // End point route to get data for comments
 
+// Comment-submit route
+router.post('/comment-submit/:id', function(req, res){
+  // TODO Insert into comments table using stuff below
+  console.log(req.params);
+  console.log(req.body);
+});
+
 // Delete title route
 router.post('/delete-title', function(req, res){
   Entrepreneur.remove({_id: req.body.deleteMe}, function(err){
