@@ -68,7 +68,7 @@ $(document).ready(function(){
     var commentText = $('<textarea placeholder="Add a comment">');
     var commentSubmit = $('<button type="submit" class="btn btn-primary comment-button">Submit Comment</button>');
 
-    commentText.attr('name', 'insertcomment');
+    commentText.attr('name', 'comment');
 
     commentForm.attr('action','/comment-submit/'+id)
       .attr('method', 'POST')
