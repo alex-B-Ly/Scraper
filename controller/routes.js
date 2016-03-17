@@ -58,7 +58,6 @@ router.post('/comment-submit/:id', function(req, res){
         {new:true},
         function(err, dbTitle){
           if(err){
-            console.log('dbComment is: ',dbComment);
             console.log(err);
           }else{
             res.send(dbTitle);
