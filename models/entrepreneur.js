@@ -9,8 +9,8 @@ var titleSchema = new Schema({
     type: String
   },
   comments:[{
-    type: Schema.Types.ObjectId,
-    ref: 'Comments'
+    type: Array,
+    ref: 'comment'
   }]
 });
 
