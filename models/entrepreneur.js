@@ -8,6 +8,14 @@ var titleSchema = new Schema({
   link:{
     type: String
   },
+  dateCreated:{
+    type: Date,
+    default: Date.now
+  },
+  dateUpdated:{
+    type: Date,
+    default: Date.now
+  },
   comments:[{
     type: Array,
     ref: 'comment'

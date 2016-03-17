@@ -37,7 +37,7 @@ router.post('/entrepreneur-scrape', function(req,res){
 
 // End point route to get data for entrepreneur route
 router.get('/entrepreneurContent', function(req,res){
-  Entrepreneur.find({}).exec(function(err, doc){
+  Entrepreneur.find({}).sort({dateUpdated:-1}).exec(function(err, doc){
     res.json(doc);
   });
 });
@@ -54,11 +54,10 @@ router.post('/comment-submit/:id', function(req, res){
       res.send(err);
     }else{
       Entrepreneur.findOneAndUpdate({'_id':titleId},
-        {$push: {'comments': dbComment.comment}},
+        {'dateUpdated': Date.now() ,$push: {'comments': dbComment.comment}},
         {new:true},
         function(err, dbTitle){
           if(err){
-            console.log('dbComment is: ',dbComment);
             console.log(err);
           }else{
             res.send(dbTitle);

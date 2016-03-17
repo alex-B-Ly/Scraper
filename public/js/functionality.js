@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   // LIST BUILDER FUNCTION
   function listBuilder(data){
-    for(var i = 0; i<12; i++){
+    for(var i = 0; i<data.length; i++){
       // list item to be appended to ul
       var titleLi = $('<li>');
       // column vars
