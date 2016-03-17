@@ -5,6 +5,7 @@ var router = express.Router();
 
 // ROUTE OBJECTS
 var Entrepreneur = require('../models/entrepreneur.js');
+var Comment = require('../models/entrepreneurComments');
 
 // ROUTES
 router.get('/', function(req, res){
@@ -45,9 +46,27 @@ router.get('/entrepreneurContent', function(req,res){
 
 // Comment-submit route
 router.post('/comment-submit/:id', function(req, res){
-  // TODO Insert into comments table using stuff below
-  console.log(req.params);
-  console.log(req.body);
+  var newComment = new Comment(req.body);
+  var titleId = req.params.id;
+
+  newComment.save(function(err, dbComment){
+    if(err){
+      res.send(err);
+    }else{
+      Entrepreneur.findOneAndUpdate({'_id':titleId},
+        {$push: {'comments': dbComment.comment}},
+        {new:true},
+        function(err, dbTitle){
+          if(err){
+            console.log('dbComment is: ',dbComment);
+            console.log(err);
+          }else{
+            res.send(dbTitle);
+          }
+        });
+    }
+  });
+
 });
 
 // Delete title route
